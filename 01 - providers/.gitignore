@@ -45,3 +45,5 @@ override.tf.json
 
 # Ignore directories for Terraform provider plugins (default behavior for providers)
 .terraform.d/
+
+example.txt
