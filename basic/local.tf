@@ -4,5 +4,5 @@
 # exemplo   -> Nome do Recurso
 resource "local_file" "exemplo" {
     filename = "example.txt"
-    content = "I'm a file content."
+    content = var.conteudo
 }

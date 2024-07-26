@@ -13,12 +13,12 @@ resource "aws_security_group" "seguranca" {
     cidr_blocks = [ "0.0.0.0/0" ]
   }
 
-  ingress {
-    from_port = 22
-    to_port = 22
-    protocol = "tcp"
-    cidr_blocks = [ "0.0.0.0/0" ]
-  }
+  # ingress {
+  #   from_port = 22
+  #   to_port = 22
+  #   protocol = "tcp"
+  #   cidr_blocks = [ "0.0.0.0/0" ]
+  # }
 
   egress {
     from_port = 0
@@ -28,16 +28,16 @@ resource "aws_security_group" "seguranca" {
   }
 }
 
-resource "aws_key_pair" "chave" {
-  key_name = "terraform-chave"
-  public_key = file("~/.ssh/id_ed25519.pub")
-}
+# resource "aws_key_pair" "chave" {
+#   key_name = "terraform-chave"
+#   public_key = file("~/.ssh/id_ed25519.pub")
+# }
 
 resource "aws_instance" "servidor" {
   ami = "ami-0427090fd1714168b"
   instance_type = "t2.nano"
   user_data = file("user_data.sh")
-  key_name = aws_key_pair.chave.key_name
+  # key_name = aws_key_pair.chave.key_name
   vpc_security_group_ids = [ aws_security_group.seguranca.id ]
 }
 
